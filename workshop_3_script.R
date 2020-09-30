@@ -1,19 +1,15 @@
 #built in datasets
 library(help = "datasets")
 
-#Vizualization
+##Vizualization
 mtcars
-
 ##machine learning
 #regression
 View(Titanic)
-
 #clustering
 View(iris)
-
-#with missing data
+##with missing data
 View(airquality)
-
 ##other datasets
 View(women)
 View(USArrests)
@@ -21,22 +17,25 @@ View(USArrests)
 
 ##importing csv
 #base r
-BASE_performance.df <- read.csv('StudentsPerformance.csv')
+BASE_performance.df <- read.csv('data/StudentsPerformance.csv')
+
+#from url
+URL_performance <- read.csv("https://github.com/jsgriffin96/r_workshop_3/blob/master/data/StudentsPerformance.csv")
 
 #tidyverse readR
 #install.packages('readr')
 library('readr')
-READR_performance.df <- read_csv('StudentsPerformance.csv')
+READR_performance.df <- read_csv('data/StudentsPerformance.csv')
 
 
 ##Performance (may not use)
 #install.packages("bench")
-library('bench')
+#library('bench')
 
 #base
-bench::mark(read.csv('Iowa_Liquor_Sales.csv'))
+#bench::mark(read.csv('Iowa_Liquor_Sales.csv'))
 #readR
-bench::mark(read_csv('Iowa_Liquor_Sales.csv'))
+#bench::mark(read_csv('Iowa_Liquor_Sales.csv'))
 
 
 ##importing excel file
@@ -57,8 +56,11 @@ READXL_performance.df$`parental level of education`
 library('foreign')
 PsychBike <- read.spss('PsychBike.sav', use.value.label=TRUE, to.data.frame=TRUE)
 
+##Importing from keyboard
+#https://finance.yahoo.com/quote/dis/history?ltr=1
+stocks <- read.delim("clipboard")
 
-#saving data
+###saving data
 write.csv(mtcars, 'data/cars.csv')
 
 write.xlsx(mtcars, "data/cars.xlsx")
@@ -66,6 +68,9 @@ write.xlsx(mtcars, "data/cars.xlsx")
 #install.packages("haven")
 library('haven')
 write_sav(mtcars, 'data/mtcars.sav')
+
+#export chart/plot
+hist(mtcars$mpg)
 
 
 
